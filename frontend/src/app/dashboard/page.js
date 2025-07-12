@@ -25,9 +25,9 @@ export default function Dashboard() {
 
         // Fetch all data in parallel
         const [cropsRes, livestockRes, expensesRes] = await Promise.all([
-          fetch('http://localhost:3001/api/crops', { credentials: 'include' }),
-          fetch('http://localhost:3001/api/livestock', { credentials: 'include' }),
-          fetch('http://localhost:3001/api/expenses', { credentials: 'include' })
+          fetch('NEXT_PUBLIC_API_URL/crops', { credentials: 'include' }),
+          fetch('NEXT_PUBLIC_API_URL/livestock', { credentials: 'include' }),
+          fetch('NEXT_PUBLIC_API_URL/expenses', { credentials: 'include' })
         ])
 
         const crops = await cropsRes.json()
