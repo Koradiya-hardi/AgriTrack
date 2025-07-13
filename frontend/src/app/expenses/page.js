@@ -34,7 +34,7 @@ export default function ExpensesPage() {
   const fetchExpenses = async () => {
     try {
       setLoading(true)
-      let url = 'NEXT_PUBLIC_API_URL/expenses?'
+      let url = `${process.env.NEXT_PUBLIC_API_URL}/api/expenses?`
       if (filters.startDate) url += `startDate=${filters.startDate.toISOString()}&`
       if (filters.endDate) url += `endDate=${filters.endDate.toISOString()}&`
       if (filters.category) url += `category=${filters.category}&`
@@ -56,7 +56,7 @@ export default function ExpensesPage() {
 
   const fetchSummary = async () => {
     try {
-      let url = 'NEXT_PUBLIC_API_URL/expenses/summary?'
+      let url = `${process.env.NEXT_PUBLIC_API_URL}/api/expenses/summary?`
       if (filters.startDate) url += `startDate=${filters.startDate.toISOString()}&`
       if (filters.endDate) url += `endDate=${filters.endDate.toISOString()}&`
 
@@ -75,7 +75,7 @@ export default function ExpensesPage() {
 
   const handleAddExpense = async (expenseData) => {
     try {
-      const res = await fetch('NEXT_PUBLIC_API_URL/expenses', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/expenses`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -98,7 +98,7 @@ export default function ExpensesPage() {
 
   const handleUpdateExpense = async (id, expenseData) => {
     try {
-      const res = await fetch(`NEXT_PUBLIC_API_URL/expenses/${id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/expenses/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -124,7 +124,7 @@ export default function ExpensesPage() {
 
   const handleDeleteExpense = async (id) => {
     try {
-      const res = await fetch(`NEXT_PUBLIC_API_URL/expenses/${id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/expenses/${id}`, {
         method: 'DELETE',
         credentials: 'include'
       })

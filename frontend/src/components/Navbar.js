@@ -7,7 +7,7 @@ export default function Navbar({ user }) {
 
   const handleLogout = async () => {
     try {
-      await fetch('NEXT_PUBLIC_API_URL/auth/logout', {
+      await fetch(`${NEXT_PUBLIC_API_URL}/auth/logout`, {
         method: 'POST',
         credentials: 'include'
       })

@@ -22,7 +22,7 @@ export default function LivestockPage() {
   const fetchLivestock = async () => {
     try {
       setLoading(true)
-      const res = await fetch('NEXT_PUBLIC_API_URL/livestock', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/livestock`, {
         credentials: 'include'
       })
       
@@ -41,7 +41,7 @@ export default function LivestockPage() {
 
   const handleAddLivestock = async (livestockData) => {
     try {
-      const res = await fetch('NEXT_PUBLIC_API_URL/livestock', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/livestock`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ export default function LivestockPage() {
         try {
             console.log('Attempting to delete livestock:', id);
             
-            const res = await fetch(`NEXT_PUBLIC_API_URL/livestock/${id}`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/livestock/${id}`, {
             method: 'DELETE',
             credentials: 'include',
             headers: {
@@ -96,7 +96,7 @@ export default function LivestockPage() {
 
   const handleAddFeedingLog = async (id, logData) => {
     try {
-      const res = await fetch(`NEXT_PUBLIC_API_URL/livestock/${id}/feeding`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/livestock/${id}/feeding`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -120,7 +120,7 @@ export default function LivestockPage() {
   }
   const handleAddVetLog = async (id, logData) => {
   try {
-    const res = await fetch(`NEXT_PUBLIC_API_URL/livestock/${id}/vet`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/livestock/${id}/vet`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -145,7 +145,7 @@ export default function LivestockPage() {
 
 const handleAddVaccination = async (id, vaccineData) => {
   try {
-    const res = await fetch(`NEXT_PUBLIC_API_URL/livestock/${id}/vaccinations`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/livestock/${id}/vaccinations`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

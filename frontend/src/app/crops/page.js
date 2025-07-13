@@ -20,7 +20,7 @@ export default function CropsPage(){
     const fetchCrops = async () => {
     try {
       setLoading(true)
-      const res = await fetch('NEXT_PUBLIC_API_URL/crops', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/crops`, {
         credentials: 'include'
       })
       
@@ -40,7 +40,7 @@ export default function CropsPage(){
 
   const handleAddCrop = async (cropData) => {
     try {
-        const res = await fetch('NEXT_PUBLIC_API_URL/crops', {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/crops`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -67,7 +67,7 @@ export default function CropsPage(){
 }
   const handleUpdateCrop = async (id, cropData) => {
   try {
-    const res = await fetch(`NEXT_PUBLIC_API_URL/crops/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/crops/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -94,7 +94,7 @@ export default function CropsPage(){
   
   const handleDeleteCrop = async (id) => {
     try {
-      const res = await fetch(`NEXT_PUBLIC_API_URL/crops/${id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/crops/${id}`, {
         method: 'DELETE',
         credentials: 'include'
       })
