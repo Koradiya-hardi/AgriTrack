@@ -6,11 +6,16 @@ const app = express();
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://agri-track-c7or-eniwnps4z-koradiya-hardis-projects.vercel.app'
+];
+
 // Middleware
 app.use(cors({
-  origin: 'http://localhost:3000', 
+  origin: allowedOrigins, 
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  credentials: true // Allow cookies to be sent 
+  credentials: true ,// Allow cookies to be sent
 }));
 
 
@@ -20,7 +25,11 @@ app.use(express.json());
 
 
 // Database connection
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGO_URI,
+  {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('MongoDB connection error:', err));
 
