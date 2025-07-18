@@ -3,7 +3,7 @@
 /backend/node_modules
 /node_modules
 # environment files
-.env
+frontend/.env.local
 /backend/.env
 
 /node_modules
