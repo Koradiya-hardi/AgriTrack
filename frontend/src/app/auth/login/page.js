@@ -23,6 +23,8 @@ export default function LoginPage() {
         credentials: 'include'
       })
 
+      console.log('API Base URL:', process.env.NEXT_PUBLIC_API_URL)
+
       const data = await res.json()
       
       if (!res.ok) {
