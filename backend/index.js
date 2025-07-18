@@ -8,7 +8,7 @@ app.use(cookieParser());
 
 const allowedOrigins = [
   'http://localhost:3000',
-  'https://agri-track-ai93.vercel.app'
+  'https://agri-track-t436.vercel.app'
 ];
 
 // Middleware
