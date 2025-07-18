@@ -8,7 +8,7 @@ app.use(cookieParser());
 
 const allowedOrigins = [
   'http://localhost:3000',
-  'https://agri-track-c7or-eniwnps4z-koradiya-hardis-projects.vercel.app'
+  'https://agri-track-ai93.vercel.app'
 ];
 
 // Middleware
@@ -18,11 +18,7 @@ app.use(cors({
   credentials: true ,// Allow cookies to be sent
 }));
 
-
-
 app.use(express.json());
-
-
 
 // Database connection
 mongoose.connect(process.env.MONGO_URI,
