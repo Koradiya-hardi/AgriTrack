@@ -25,9 +25,9 @@ export default function Dashboard() {
 
         // Fetch all data in parallel
         const [cropsRes, livestockRes, expensesRes] = await Promise.all([
-          fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/crops`, { credentials: 'include' }),
-          fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/livestock`, { credentials: 'include' }),
-          fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/expenses`, { credentials: 'include' })
+          fetch(`https://agritrack-2.onrender.com/api/crops`, { credentials: 'include' }),
+          fetch(`https://agritrack-2.onrender.com/api/livestock`, { credentials: 'include' }),
+          fetch(`https://agritrack-2.onrender.com/api/expenses`, { credentials: 'include' })
         ])
 
         const crops = await cropsRes.json()
