@@ -8,14 +8,15 @@ app.use(cookieParser());
 
 const allowedOrigins = [
   'http://localhost:3000',
-  'https://agri-track-ai93.vercel.app'
+  'https://agri-track-t436.vercel.app'
 ];
 
 // Middleware
 app.use(cors({
   origin: allowedOrigins, 
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  credentials: true ,// Allow cookies to be sent
+  credentials: true ,
+  allowedHeaders: ['Content-Type']
 }));
 
 app.use(express.json());

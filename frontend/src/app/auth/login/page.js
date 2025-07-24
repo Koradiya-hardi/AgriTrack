@@ -14,7 +14,7 @@ export default function LoginPage() {
     setError('')
     
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`, {
+      const res = await fetch(`https://agritrack-2.onrender.com/api/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -22,13 +22,14 @@ export default function LoginPage() {
         body: JSON.stringify({ email, password }),
         credentials: 'include'
       })
+      console.log('API Base URL:', process.env.NEXT_PUBLIC_API_URL)
 
       const data = await res.json()
       
       if (!res.ok) {
         throw new Error(data.msg || 'Login failed')
       }
-
+       console.log("API ENV VAR:", process.env.NEXT_PUBLIC_API_URL)
       // Store user data in localStorage
       localStorage.setItem('user', JSON.stringify(data.user))
       router.push('/dashboard')
