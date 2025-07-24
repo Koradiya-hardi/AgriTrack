@@ -8,8 +8,7 @@ app.use(cookieParser());
 
 const allowedOrigins = [
   'http://localhost:3000',
-  'https://agri-track-c7or-ld2ipssq2-koradiya-hardis-projects.vercel.app/'
-];
+  ];
 
 // Middleware
 app.use(cors({
@@ -20,7 +19,7 @@ app.use(cors({
 
     // Allow all Vercel preview deployments like:
     // https://agri-track-c7or-xxxx.vercel.app
-    const vercelPreviewRegex = /^https:\/\/agri-track-c7or-.*\.vercel\.app$/;
+    const vercelPreviewRegex = /^https:\/\/[a-zA-Z0-9-]+\.vercel\.app$/;
     if (vercelPreviewRegex.test(origin)) {
       return callback(null, true);
     }
