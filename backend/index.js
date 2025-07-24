@@ -8,17 +8,29 @@ app.use(cookieParser());
 
 const allowedOrigins = [
   'http://localhost:3000',
-  'https://agri-track-t436.vercel.app'
+  'https://agri-track-c7or-ld2ipssq2-koradiya-hardis-projects.vercel.app/'
 ];
 
 // Middleware
 app.use(cors({
-  origin: allowedOrigins, 
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  credentials: true ,
-  allowedHeaders: ['Content-Type']
-}));
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
 
+    // Allow all Vercel preview deployments like:
+    // https://agri-track-c7or-xxxx.vercel.app
+    const vercelPreviewRegex = /^https:\/\/agri-track-c7or-.*\.vercel\.app$/;
+    if (vercelPreviewRegex.test(origin)) {
+      return callback(null, true);
+    }
+
+    // Otherwise block it
+    return callback(new Error('Not allowed by CORS'));
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  credentials: true
+}));
 app.use(express.json());
 
 // Database connection
